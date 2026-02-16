@@ -27,9 +27,7 @@ notes-app/
 
 🚀 How to Run Locally
 
-Clone the repository:
-
-git clone https://github.com/yourusername/notes-app.git
+Clone the repository
 
 Navigate to the project folder:
 
@@ -55,4 +53,4 @@ Notes are automatically saved in localStorage, and input stays focused for fast 
 
 👨‍💻 Author
 
-Sehrish Maqbool.IT Student at University of Chakwal. Syntax Hub Tech Internship – Task 1 Project
+Sehrish Maqbool.IT Student at University of Chakwal. Syntax Hub Tech Internship.Frontend development – Task 1 Project
