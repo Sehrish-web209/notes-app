@@ -1,8 +1,50 @@
-# React + Vite
+📝 Notes App
+A simple and interactive Notes App built as part of Task 1 during my Syntax Hub Tech Internship. This project focuses on React fundamentals, state management, localStorage, and UI/UX design, providing a colorful and user-friendly experience.
+✨ Features
+Add, Edit & Delete Notes – Effortless note management.
+Persistent Storage – Notes stay saved even after refreshing the page using localStorage.
+Input Auto-Focus – Smooth and fast note-taking experience.
+Clean UI/UX – Gradient backgrounds, responsive layout, and interactive buttons.
+🛠️ Technology Stack
+Frontend: React, JSX, CSS3
+State Management: useState, useEffect
+Data Persistence: localStorage
+📂 Project Structure
+Copy code
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+notes-app/
+├── src/
+│   ├── App.jsx          # Main React component
+│   ├── App.css          # Styling
+│   └── index.jsx        # React app entry point
+├── package.json
+├── package-lock.json
+└── README.md
+🚀 How to Run Locally
+Clone the repository:
+Copy code
 
-Currently, two official plugins are available:
+git clone https://github.com/yourusername/notes-app.git
+Navigate to the project folder:
+Copy code
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+cd notes-app
+Install dependencies:
+Copy code
+
+npm install
+Start the development server:
+Copy code
+
+npm run dev
+Open your browser at:
+Copy code
+
+http://localhost:5173
+💡 Usage
+Type a note in the input box and click Add or press Enter.
+Edit or delete notes using the respective buttons.
+Clear all notes with the Clear All button (with confirmation).
+Notes are automatically saved in localStorage, and input stays focused for fast note-taking.
+👨‍💻 Author
+Sehrish Maqbool.IT Student at University of Chakwal. Syntax Hub Tech Internship – Task 1 Project
