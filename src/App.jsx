@@ -2,46 +2,50 @@ import { useState, useRef, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  // State for notes and input
   const [notes, setNotes] = useState(() => {
-    // Get notes from localStorage if available
     const savedNotes = localStorage.getItem('notes');
     return savedNotes ? JSON.parse(savedNotes) : [];
   });
 
   const [noteText, setNoteText] = useState('');
+  const [editIndex, setEditIndex] = useState(null); // new state for edit
   const inputRef = useRef(null);
 
-  // Save notes to localStorage whenever notes change
+  // Save to localStorage whenever notes change
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
-  // Add a new note
-  const handleAddNote = () => {
-    if (noteText.trim() === '') return; // Prevent empty note
-    setNotes([...notes, noteText]);
-    setNoteText('');
-    inputRef.current.focus(); // focus input after adding
-  };
+  // Add or update note
+  const handleAddOrUpdateNote = () => {
+    if (noteText.trim() === '') return;
 
-  // Edit a note
-  const handleEditNote = (index) => {
-    const newText = prompt('Edit your note:', notes[index]);
-    if (newText !== null && newText.trim() !== '') {
+    if (editIndex !== null) {
+      // Update existing note
       const updatedNotes = [...notes];
-      updatedNotes[index] = newText;
+      updatedNotes[editIndex] = noteText;
       setNotes(updatedNotes);
+      setEditIndex(null);
+    } else {
+      // Add new note
+      setNotes([...notes, noteText]);
     }
+
+    setNoteText('');
+    inputRef.current.focus(); // auto focus
   };
 
-  // Delete a note
+  const handleEditNote = (index) => {
+    setNoteText(notes[index]);
+    setEditIndex(index);
+    inputRef.current.focus(); // focus input while editing
+  };
+
   const handleDeleteNote = (index) => {
     const updatedNotes = notes.filter((_, i) => i !== index);
     setNotes(updatedNotes);
   };
 
-  // Clear all notes
   const handleClearAll = () => {
     if (window.confirm('Are you sure you want to clear all notes?')) {
       setNotes([]);
@@ -59,9 +63,11 @@ function App() {
           placeholder="Enter note"
           value={noteText}
           onChange={(e) => setNoteText(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleAddNote()}
+          onKeyDown={(e) => e.key === 'Enter' && handleAddOrUpdateNote()}
         />
-        <button onClick={handleAddNote}>Add</button>
+        <button onClick={handleAddOrUpdateNote}>
+          {editIndex !== null ? 'Update' : 'Add'}
+        </button>
       </div>
 
       {notes.length > 0 && (
@@ -87,5 +93,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
